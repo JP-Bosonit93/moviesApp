@@ -1,0 +1,25 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.sectionFirstImages{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  height:82vh;
+  margin-top: 20px;
+}
+
+.uniqueCard{
+  padding: 10px;
+}
+
+.centerh2Estrenos{
+  text-align: center;
+  color: rgb(60, 60, 58);
+  padding-top: 10px;
+}

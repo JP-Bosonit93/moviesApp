@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.asideMEnuPlusRouter {
+  display: flex;
+}
+
+.menuSide {
+  padding: 5px;
+  background-color: #b3b3b3;
+  /* border: 4px solid rgb(61, 61, 61); */
+}
+
+@media screen and (max-width: 1000px) {
+  .asideMEnuPlusRouter {
+    flex-direction: column;
+  }
+  .p-panelmenu-panel{
+    width: none;
+  }
+}

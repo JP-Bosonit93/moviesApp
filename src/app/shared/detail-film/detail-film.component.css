@@ -1,0 +1,19 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.sectionFirstImages{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  height:85vh;
+  margin-top: 20px;
+}
+
+.uniqueCard{
+  padding: 10px;
+}

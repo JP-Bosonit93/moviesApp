@@ -1,0 +1,38 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.sectionFirstImages{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  height:80vh;
+  margin-top: 20px;
+}
+
+.uniqueCard{
+  padding: 10px;
+}
+
+.formCenter{
+ margin-left: 25vw;
+ margin-top: 20px;
+}
+
+.button-text{
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.p-input-icon-left > .p-inputtext {
+  padding: 0.5rem;
+}
+
+.p-input-icon-left > i:first-of-type {
+  left: -1.5rem;
+  color: #6c757d;
+}

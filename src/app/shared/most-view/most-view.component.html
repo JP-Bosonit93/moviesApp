@@ -1,0 +1,49 @@
+<section class="sectionFirstImages">
+  <div *ngFor="let item of filteredFilms" class="uniqueCard">
+    <p-card
+      [header]="item.title | cutterRef"
+      subheader="Card Subheader"
+      [style]="{ width: '360px', fontSize: '10px' }"
+      styleClass="p-card-shadow"
+    >
+      <ng-template pTemplate="header">
+        <img
+          alt="Card"
+          src="{{
+            'https://www.themoviedb.org/t/p/original/' + item.backdrop_path
+          }}"
+        />
+      </ng-template>
+      <p-scrollPanel
+        [style]="{
+          width: '100%',
+          height: '100px'
+        }"
+      >
+        {{ item.overview }}
+      </p-scrollPanel>
+      <ng-template pTemplate="footer">
+        <p-button
+          *ngIf="!checkSimilar(item)"
+          label="Save this film"
+          icon="pi pi-heart-fill"
+          (click)="saveToLocal(item)"
+        ></p-button>
+        <p-button
+          *ngIf="checkSimilar(item)"
+          label="Saved film"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+        ></p-button>
+
+        <p-button
+          label="More Info"
+          icon="pi pi-info-circle"
+          styleClass="p-button-secondary"
+          [style]="{ 'margin-left': '.5em' }"
+          (click)="navigateToitem(item)"
+        ></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</section>
