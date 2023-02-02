@@ -14,6 +14,10 @@ import { LastResultComponent } from './last-result/last-result.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResultAfterInputComponent } from './result-after-input/result-after-input.component';
+import { ProvesComponent } from './proves/proves.component';
+import { PruebaComponent } from './prueba/prueba.component';
+import { ArrayToString } from '../pipes/arrayToString.pipe';
+import { ShowFilmsComponent } from '../components/show-films/show-films.component';
 
 
 @NgModule({
@@ -28,14 +32,20 @@ import { ResultAfterInputComponent } from './result-after-input/result-after-inp
     CutterRefPipe,
     LastResultComponent,
     SearchComponent,
-    ResultAfterInputComponent
+    ResultAfterInputComponent,
+    ProvesComponent,
+    PruebaComponent,
+    ArrayToString,
+    ShowFilmsComponent
 
   ],
   exports:[
     MenuComponent,
     NavbarComponent,
     ResultFilmsComponent,
-    AsideMenuComponent
+    AsideMenuComponent,
+    ShowFilmsComponent
+
   ],
   imports: [
     CommonModule,

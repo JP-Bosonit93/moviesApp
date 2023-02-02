@@ -1,6 +1,45 @@
 <p-panelMenu
+class="asideMenu"
 [model]="items"
-[style]="{'width':'300px'}"
+
 (click)="onLabelClick(items)">
 </p-panelMenu>
+
+<div  class="card-container">
+  <h2>My profile</h2>
+	<img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+	<h3>Juan Pablo</h3>
+	<h4>Málaga</h4>
+	<p> front-end developer</p>
+
+  <p-card
+
+      subheader="Pelicula favorita: Avatar"
+      [style]="{ width: '100%', height:'20vh', fontSize: '15px', color:'black'}"
+      styleClass="p-card-shadow"
+    >
+    <img
+          class="imgCard"
+          alt="Card"
+          src="https://lumiere-a.akamaihd.net/v1/images/avatar-twow-videobg01_cdd3dcb8.jpeg"
+        />
+
+  </p-card>
+  <section class="buttonProfile">
+    <button (click)="navigateToitem()" pButton pRipple type="button" label="Go to this Film" class="p-button-warning"></button>
+    <!-- <button  pButton pRipple type="button" label="See my profile" class="p-button-success"></button> -->
+    <p-button (click)="showBasicDialog()"  icon="pi pi-external-link" label="Show Profile" class="p-button-warning"></p-button>
+    <p-dialog header="Welcome to your profile" [(visible)]="displayBasic" [style]="{width: '60vw'}">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text"></p-button>
+          <p-button icon="pi pi-file" (click)="[navigateToitem(), displayBasic=false]" label="¿Desea cambiar sus datos?" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-dialog>
+  </section>
+
+</div>
 

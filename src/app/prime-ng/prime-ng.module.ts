@@ -12,8 +12,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DataViewModule } from 'primeng/dataview';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
-
-
+import {DialogModule} from 'primeng/dialog';
+import {RatingModule} from 'primeng/rating';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {TreeSelectModule} from 'primeng/treeselect';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [],
@@ -29,7 +32,11 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
     DataViewModule,
     PanelMenuModule,
     ScrollPanelModule,
-
+    DialogModule,
+    RatingModule,
+    MultiSelectModule,
+    TreeSelectModule,
+    BrowserAnimationsModule
 
   ]
 })

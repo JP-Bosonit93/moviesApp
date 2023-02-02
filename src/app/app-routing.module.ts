@@ -7,15 +7,19 @@ import { MostViewComponent } from './shared/most-view/most-view.component';
 import { DetailFilmComponent } from './shared/detail-film/detail-film.component';
 import { LastResultComponent } from './shared/last-result/last-result.component';
 import { SearchComponent } from './shared/search/search.component';
+import { ProvesComponent } from './shared/proves/proves.component';
+import { PruebaComponent } from './shared/prueba/prueba.component';
 
 
 const routes: Routes = [
   {path: '', component:ResultFilmsComponent},
   { path: 'about', component: AboutComponent },
   {path: 'likes', component:DetailFilmComponent},
-  { path: 'top', component: MostViewComponent },
+  { path: 'top', component: ResultFilmsComponent },
   { path: 'last/:id', component: LastResultComponent },
-  { path: 'search', component: SearchComponent}
+  { path: 'search', component: SearchComponent},
+  { path: 'proves', component: ProvesComponent},
+  { path: 'prueba', component: PruebaComponent},
 ];
 
 @NgModule({

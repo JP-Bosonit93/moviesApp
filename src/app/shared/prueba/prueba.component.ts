@@ -1,22 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable, BehaviorSubject, debounceTime, switchMap } from 'rxjs';
+import { RESTCountriesResponse } from 'src/app/interfaces/RestCountriesResponse.interfaces';
+import { Result } from 'src/app/interfaces/result.interfaces';
 import { MovieServices } from 'src/app/services/movie-services.service';
-import { BehaviorSubject, debounceTime, switchMap } from 'rxjs';
-import { Result } from '../../interfaces/result.interfaces';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['search.component.css'],
+  selector: 'app-prueba',
+  templateUrl: './prueba.component.html',
+  styleUrls: ['./prueba.component.sass'],
 })
-export class SearchComponent {
+
+
+export class PruebaComponent {
   inputValue = '';
   resultsFilteredFilms!: Result[];
-  private formValueSubject = new BehaviorSubject<string>('');
+  private formValueSubject = new BehaviorSubject<string>(this.inputValue);
 
-  constructor(private ms: MovieServices, private router: Router) {}
+  constructor(private ms: MovieServices, private router: Router) {
+  }
 
   updateFormValue(value: string) {
+
     if (value.length > 0) {
       this.formValueSubject.next(value);
     } else {

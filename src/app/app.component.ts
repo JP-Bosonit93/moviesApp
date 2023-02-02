@@ -9,4 +9,6 @@ import {MenuItem} from 'primeng/api';
 })
 export class AppComponent {
   title = 'moviesApp';
+
+
 }

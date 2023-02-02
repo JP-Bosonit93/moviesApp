@@ -13,7 +13,7 @@ import { SearchComponent } from './shared/search/search.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

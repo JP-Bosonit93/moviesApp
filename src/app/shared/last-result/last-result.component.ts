@@ -1,18 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Result } from 'src/app/interfaces/result.interfaces';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MovieServices } from 'src/app/services/movie-services.service';
 import { RESTCountriesResponse } from 'src/app/interfaces/RestCountriesResponse.interfaces';
-
+import { ProductService } from '../../services/product-services.service';
+import { Product } from 'src/app/interfaces/product.interface';
+import { DialogModule } from 'primeng/dialog';
+import { movieID } from '../../interfaces/movieID.interface';
 @Component({
   selector: 'app-last-result',
   templateUrl: './last-result.component.html',
   styleUrls: ['last-result.component.css'],
 })
-export class LastResultComponent implements OnInit {
+export class LastResultComponent implements OnInit, OnChanges {
   savedMovie: Result[] = [];
-  results: Result[] = [];
-
+  result!: Result[];
+  products: Product[] = [];
+  movie!: movieID;
+  cols!: any[];
+  display: boolean = false;
+  id!:number;
+  resultsReviews:number = 0;
+  state: boolean = true;
   constructor(
     private route: Router,
     private actRoute: ActivatedRoute,
@@ -22,21 +31,30 @@ export class LastResultComponent implements OnInit {
   ngOnInit(): void {
     this.actRoute.params.subscribe((params) => {
       let id = params['id'];
-      this.ms.getTopRatedMoviesByPage(1).subscribe((results) => {
-        this.savedMovie = results.results;
-        this.results = [...this.savedMovie].filter((arg) => arg.id == id);
-        if (this.results.length == 0) {
-          console.log('OK')
-           this.ms.getMovieByPage(1).subscribe((results) => {
-        this.savedMovie = results.results;
-        this.results = [...this.savedMovie].filter((arg) => arg.id == id);
-           })
-        }
+      this.id = id;
+      this.ms.getMovieReviews(this.id).subscribe(res => this.resultsReviews = res.results.length )
+      this.ms.getMovieByID(this.id).subscribe(res => {
+        this.result = [res].flat();
       });
     });
+
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
+
 
   goingHome() {
     this.route.navigate(['top']);
   }
+
+  showDialog() {
+    this.display = true;
+  }
+
+  changeState(){
+    this.state = !this.state
+  }
+
 }

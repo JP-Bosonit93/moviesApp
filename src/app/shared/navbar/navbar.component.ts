@@ -22,4 +22,10 @@ export class NavbarComponent {
     ];
   }
 
+  seeHeight(){
+    var navbar:any | null = document.querySelector('.navbarTemplate');
+    var height = navbar.offsetHeight;
+  console.log(height);
+  }
+
 }

@@ -1,3 +1,5 @@
+<input [(ngModel)]="inputValue" (ngModelChange)="updateFormValue($event)">
+<!-- <p>Valor formulario: {{formValue | async}}</p> -->
 
 <section class="sectionFirstImages">
   <div *ngFor="let item of resultsFilteredFilms" class="uniqueCard">

@@ -1,1 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+* {
+	box-sizing: border-box;
+}
+
+
+.asideMenu{
+  width: 280px;
+  display: block;
+  background-color: aqua;
+}
+
+
+.card-container {
+	background-color: #050f1b;
+	border-radius: 5px;
+  border: 2px solid white;
+	color: #B3B8CD;
+	margin-top: 10px;
+	width: 100%;
+  padding: 10px;
+	text-align: center;
+  height: fit-content;
+}
+
+.card-container .pro {
+	color: #231E39;
+	background-color: #050f1b;
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 3px 7px;
+	position: absolute;
+	top: 30px;
+	left: 30px;
+}
+
+.card-container .round {
+	border: 2px solid #ffffff;
+	border-radius: 50%;
+  width: 100px;
+
+}
+.p-button-warning,.p-button-success{
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.buttonProfile{
+  display: flex;
+}
+
+.imgCard{
+  width: 12vw;
+  height: 10vh;
+}
+
+h2,h3,h4{
+  margin: 2px;
+}
+
+@media screen and (max-width: 1000px) {
+  .asideMenu{
+    margin: 5px;
+    width:90vw!important;
+  }
+}

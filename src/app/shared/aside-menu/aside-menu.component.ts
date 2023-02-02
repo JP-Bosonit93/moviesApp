@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AsideMenuComponent implements OnInit {
   items: MenuItem[] = [];
+  displayBasic!: boolean;
 
   constructor(private router: Router) {}
 
@@ -63,4 +64,11 @@ export class AsideMenuComponent implements OnInit {
       }
     }
   }
+  navigateToitem() {
+    this.router.navigate(['/last', '76600']);
+  }
+
+  showBasicDialog() {
+    this.displayBasic = true;
+}
 }

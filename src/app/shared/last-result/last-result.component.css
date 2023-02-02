@@ -5,23 +5,43 @@
 }
 
 .sectionFirstImages{
-  display: flex;
-  margin-left: 25vw;
-  justify-content: space-around;
-  align-items: center;
 
-  overflow-y: auto;
   height:85vh;
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+align-items: center;
 }
 
 .uniqueCard{
   padding: 10px;
 }
 
+.section{
+  display: flex;
+  /* flex-direction: column; */
+}
+
+
+
+img{
+
+  cursor: pointer;
+}
+
+img:hover{
+  transform: scale(1.1);
+  transition: 2s;
+  box-shadow: 0 0 10px 5px #cfcfcf;
+}
+
+
 
 @media screen and (max-width: 1000px) {
   .sectionFirstImages{
     margin-left: 0vw;
+  }
+  .section{
+    display: flex;
+    flex-direction: column;
   }
 }

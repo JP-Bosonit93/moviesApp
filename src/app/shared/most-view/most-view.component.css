@@ -10,10 +10,50 @@
   align-items: center;
   flex-wrap: wrap;
   overflow-y: auto;
-  height:85vh;
+  height:72vh;
   margin-top: 20px;
 }
 
 .uniqueCard{
   padding: 10px;
+  margin-top:20px;
+}
+
+.centerh2Estrenos{
+  text-align: center;
+  color: rgb(60, 60, 58);
+  padding-top: 10px;
+}
+
+
+select {
+  width: 33.33%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 1%;
+}
+.filterGenre{
+  margin: 10px;
+}
+option {
+  width: 33.33%;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+option:hover {
+  background-color: #f2f2f2;
+}
+
+img{
+  padding: 3px;
+  cursor: pointer;
+}
+
+img:hover{
+  transform: scale(1.1);
+  transition: 2s;
+  box-shadow: 0 0 10px 5px #001a2c;
 }

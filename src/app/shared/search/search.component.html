@@ -1,32 +1,10 @@
 <div class="formCenter">
-  <form autocomplete="off" (ngSubmit)="guardar()" [formGroup]="miFormulario" class="formSearch">
+    <h2 class="searchH2">Realice la busqueda de una pelicula</h2>
     <span class="p-input-icon-left">
     <i class="pi pi-search"></i>
-    <input type="text" formControlName="nombre" pInputText placeholder="Search" class="inputSearch"/>
+    <input type="text" [(ngModel)]="inputValue" (ngModelChange)="updateFormValue($event)"  pInputText placeholder="Insert the film here.." class="inputSearch"/>
     </span>
-    <p-button type="submit"  class="button-text" styleClass="p-button-secondary" label="Click to search"></p-button>
-  </form>
 </div>
 
 <app-result-after-input [resultsFilteredFilms]="resultsFilteredFilms"></app-result-after-input>
 
-
-<!-- <section class="sectionFirstImages">
-  <div *ngFor="let item of resultsFilteredFilms" class="uniqueCard">
-    <p-card [header] = "item.title | cutterRef"  subheader="Card Subheader" [style]="{width: '360px'}" styleClass="p-card-shadow">
-      <ng-template pTemplate="header">
-          <img alt="Card" [src]="
-          item.backdrop_path !== null
-          //  ? 'https://www.themoviedb.org/t/p/original/' + item.backdrop_path
-            : 'https://blogs.unsw.edu.au/nowideas/files/2018/11/error-no-es-fracaso.jpg'
-        ">
-      </ng-template>
-      <p-scrollPanel [style]="{width: '100%', height: '100px'}">
-        {{ item.overview }}
-    </p-scrollPanel>
-      <ng-template pTemplate="footer">
-          <p-button label="Delete film" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}" ></p-button>
-      </ng-template>
-    </p-card>
-  </div>
-</section> -->

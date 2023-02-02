@@ -6,13 +6,22 @@
 
 .asideMEnuPlusRouter {
   display: flex;
+  background-color: rgb(1, 24, 36);
+
 }
 
 .menuSide {
   padding: 5px;
-  background-color: #b3b3b3;
-  /* border: 4px solid rgb(61, 61, 61); */
+  background-color: #f6f6f6;
 }
+
+
+.menuRouter{
+
+  display: flex;
+
+}
+
 
 @media screen and (max-width: 1000px) {
   .asideMEnuPlusRouter {

@@ -2,30 +2,66 @@ import { Component, OnInit } from '@angular/core';
 import { MovieServices } from 'src/app/services/movie-services.service';
 import { Result } from '../../interfaces/result.interfaces';
 import { RESTCountriesResponse } from '../../interfaces/RestCountriesResponse.interfaces';
-import { CardModule } from 'primeng/card';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CutterRefPipe } from 'src/app/pipes/cutter-ref.pipe';
-
+import { Genre } from '../../interfaces/movieID.interface';
+import { genre } from 'src/app/utils/file';
+import { ArrayToString } from 'src/app/pipes/arrayToString.pipe';
+import { InputTextModule } from 'primeng/inputtext';
 @Component({
   selector: 'app-result-films',
   templateUrl: './result-films.component.html',
   styleUrls: ['./result-films.component.css'],
-  providers: [CutterRefPipe],
+  providers: [CutterRefPipe, ArrayToString],
 })
 export class ResultFilmsComponent implements OnInit {
-  generalResultsRest!: RESTCountriesResponse;
+  generalResultRest!: RESTCountriesResponse;
   filteredFilms: Result[] = [];
+  url!:string;
   localResults: Result[] = JSON.parse(localStorage.getItem('savedMovies')!);
+  allGenres: Genre[] = [];
+  selectedId: number = 0;
+  selectedCities!: Genre;
+  options1: Genre[] = [];
 
-  constructor(private ms: MovieServices, private router: Router) {}
+  countries!: any;
+  selectedCity1: any;
+
+  constructor(private ms: MovieServices, private router: Router, private route:ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.ms
+    let url: string =
+      document.URL.split('/')[document.URL.split('/').length - 1];
+    this.url = url;
+
+    if (url == 'top') {
+      this.ms
+        .getTopRatedMoviesByPage(1)
+        .subscribe((generalResults: RESTCountriesResponse) => {
+          this.generalResultRest = generalResults;
+          this.filteredFilms = this.generalResultRest.results;
+        });
+
+      this.ms.getGenres().subscribe((res) => {
+        this.allGenres = res;
+      });
+
+      this.options1 = genre;
+    } else {
+      this.ms
       .getMovieByPage(1)
       .subscribe((generalResults: RESTCountriesResponse) => {
-        this.generalResultsRest = generalResults;
-        this.filteredFilms = this.generalResultsRest.results;
+        this.generalResultRest = generalResults;
+        this.filteredFilms = this.generalResultRest.results;
       });
+
+    this.ms.getGenres().subscribe((res) => {
+      this.allGenres = res;
+    });
+
+    this.options1 = genre;
+    }
+
   }
 
   onSave(item: Result) {
@@ -36,6 +72,7 @@ export class ResultFilmsComponent implements OnInit {
     const savedMovies: Result[] = JSON.parse(
       localStorage.getItem('savedMovies')!
     );
+
     let newSavedMovies: Result[] = [...savedMovies];
 
     if (newSavedMovies.some((movie: Result) => movie.id == item.id)) {
@@ -65,5 +102,28 @@ export class ResultFilmsComponent implements OnInit {
 
   navigateToitem(item: Result) {
     this.router.navigate(['/last', item.id]);
+  }
+
+  updateSelectedId(event: any) {
+    this.selectedId = Number(event.target.value);
+    if (this.selectedId == 0) {
+      this.ms
+        .getMovieByPage(1)
+        .subscribe((generalResults: RESTCountriesResponse) => {
+          this.generalResultRest = generalResults;
+          this.filteredFilms = this.generalResultRest.results;
+        });
+    } else {
+      this.ms
+        .getMovieByPage(1)
+        .subscribe((generalResults: RESTCountriesResponse) => {
+          this.generalResultRest = generalResults;
+          let filteredByGenre = this.generalResultRest.results.filter((res) =>
+            [...res.genre_ids].includes(this.selectedId)
+          );
+          this.filteredFilms = filteredByGenre;
+          console.log(this.filteredFilms);
+        });
+    }
   }
 }

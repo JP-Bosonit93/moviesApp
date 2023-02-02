@@ -6,7 +6,7 @@
   </p-menubar> -->
 
   <p-menubar class="navbarTemplate">
-        <p-button class="navbarButtons" [styleClass]= " item.label === 'Login' ? 'p-button-success' : 'p-button-warning' "  *ngFor="let item of items" label="{{item.label}}" ></p-button>
+        <p-button (click)="seeHeight()" class="navbarButtons" [styleClass]= " item.label === 'Login' ? 'p-button-success' : 'p-button-warning' "  *ngFor="let item of items" label="{{item.label}}" ></p-button>
   </p-menubar>
 
 <!-- <p-menubar [model]="items"></p-menubar> -->

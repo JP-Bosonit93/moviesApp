@@ -14,6 +14,13 @@
   margin-top: 20px;
 }
 
+.searchH2{
+  color: aliceblue;
+  margin: 7px;
+  text-decoration: underline;
+  text-decoration-color: darkgoldenrod;
+}
+
 .uniqueCard{
   padding: 10px;
 }
@@ -21,6 +28,10 @@
 .formCenter{
  margin-left: 25vw;
  margin-top: 20px;
+}
+
+.inputSearch{
+  width: 30vw;
 }
 
 .button-text{

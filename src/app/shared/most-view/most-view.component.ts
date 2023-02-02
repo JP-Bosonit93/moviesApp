@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RESTCountriesResponse } from 'src/app/interfaces/RestCountriesResponse.interfaces';
 import { Result } from 'src/app/interfaces/result.interfaces';
 import { MovieServices } from '../../services/movie-services.service';
+import { Genre } from '../../interfaces/movieID.interface';
+import { genre } from 'src/app/utils/file';
 
 @Component({
   selector: 'app-most-view',
@@ -13,21 +15,60 @@ export class MostViewComponent implements OnInit {
   generalResultRest!: RESTCountriesResponse;
   filteredFilms: Result[] = [];
   localResults: Result[] = JSON.parse(localStorage.getItem('savedMovies')!);
+  allGenres: Genre[] = [];
+  selectedId: number = 0;
+  selectedCities!: Genre;
+  options1: Genre[] = [];
+
+  countries!: any;
+  selectedCity1: any;
 
   constructor(
     private ms: MovieServices,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.ms.getTopRatedMoviesByPage(1).subscribe((generalResults:RESTCountriesResponse) => {
-      this.generalResultRest = generalResults;
-      this.filteredFilms = this.generalResultRest.results;
+    //     let url = document.URL;
+    // let parts = url.split('/');
+    // console.log(parts)
+    // let top = parts[parts.length - 1];
+    // console.log(top)
+
+    let url: String =
+      document.URL.split('/')[document.URL.split('/').length - 1];
+
+    if (url == 'top') {
+      this.ms
+        .getTopRatedMoviesByPage(1)
+        .subscribe((generalResults: RESTCountriesResponse) => {
+          this.generalResultRest = generalResults;
+          this.filteredFilms = this.generalResultRest.results;
+        });
+
+      this.ms.getGenres().subscribe((res) => {
+        this.allGenres = res;
+      });
+
+      this.options1 = genre;
+    } else {
+      this.ms
+      .getMovieByPage(1)
+      .subscribe((generalResults: RESTCountriesResponse) => {
+        this.generalResultRest = generalResults;
+        this.filteredFilms = this.generalResultRest.results;
+      });
+
+    this.ms.getGenres().subscribe((res) => {
+      this.allGenres = res;
     });
+
+    this.options1 = genre;
+    }
   }
 
   saveToLocal(item: any) {
-
     let savedMovies: any | Result[] = JSON.parse(
       localStorage.getItem('savedMovies')!
     );
@@ -41,31 +82,44 @@ export class MostViewComponent implements OnInit {
     }
 
     if (savedMovies !== null) {
-      if ([...savedMovies].some((movie:Result) => movie.id === item.id)) {
+      if ([...savedMovies].some((movie: Result) => movie.id === item.id)) {
         alert('pelicula ya introducida');
         savedMovies = [...savedMovies];
       } else {
         setTimeout(() => {
           newSavedMovies = [...savedMovies];
-        if (newSavedMovies.some((movie) => movie.id !== item.id)) {
-          newSavedMovies.unshift(item);
-          localStorage.setItem('savedMovies', JSON.stringify(newSavedMovies));
-          this.localResults = [...newSavedMovies]
-        }
+          if (newSavedMovies.some((movie) => movie.id !== item.id)) {
+            newSavedMovies.unshift(item);
+            localStorage.setItem('savedMovies', JSON.stringify(newSavedMovies));
+            this.localResults = [...newSavedMovies];
+          }
         }, 1000);
-
       }
     }
   }
 
-  checkSimilar(x: Result): boolean {
-    if ([...this.localResults].some((arg:Result) => arg.id === x.id)) {
-      return true;
-    }
-    return false;
-  }
 
-  navigateToitem(item:Result){
-    this.router.navigate(['/last', item.id]);
+
+  updateSelectedId(event: any) {
+    this.selectedId = Number(event.target.value);
+    if (this.selectedId == 0) {
+      this.ms
+        .getMovieByPage(1)
+        .subscribe((generalResults: RESTCountriesResponse) => {
+          this.generalResultRest = generalResults;
+          this.filteredFilms = this.generalResultRest.results;
+        });
+    } else {
+      this.ms
+        .getMovieByPage(1)
+        .subscribe((generalResults: RESTCountriesResponse) => {
+          this.generalResultRest = generalResults;
+          let filteredByGenre = this.generalResultRest.results.filter((res) =>
+            [...res.genre_ids].includes(this.selectedId)
+          );
+          this.filteredFilms = filteredByGenre;
+          console.log(this.filteredFilms);
+        });
+    }
   }
 }

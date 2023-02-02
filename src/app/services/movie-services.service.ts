@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Result } from '../interfaces/result.interfaces';
 import { RESTCountriesResponse } from '../interfaces/RestCountriesResponse.interfaces';
 import { Genre } from '../interfaces/genre.interface';
+import { Reviews, IntroReview } from '../interfaces/Reviews.interface';
+import { ResponseByID, movieID } from '../interfaces/movieID.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +47,14 @@ export class MovieServices {
 
   getMovieFiltered( name:string ): Observable<RESTCountriesResponse>{
     return this.http.get<RESTCountriesResponse>(`https://api.themoviedb.org/3/search/movie?api_key=7be72508776961f3948639fbd796bccd&query=${name}`);
+  }
+
+  getMovieReviews( movieId:number ): Observable<IntroReview>{
+    return this.http.get<IntroReview>(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=7be72508776961f3948639fbd796bccd&language=en-US&page=1`);
+  }
+
+  getMovieByID( movieId:number ): Observable<Result[]>{
+    return this.http.get<Result[]>(`https://api.themoviedb.org/3/movie/${movieId}?api_key=7be72508776961f3948639fbd796bccd`);
   }
 
 }

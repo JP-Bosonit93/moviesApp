@@ -1,30 +1,16 @@
 
-
-<div class="centerh2Estrenos">
-  <h2 *ngIf="url=='top'" class="lastNews"> Top rated Films</h2>
-  <h2 *ngIf="url==''" class="lastNews"> Recent Films</h2>
-
-  <div>
-    <h2 class="filterGenre">Filter by genre</h2>
-    <select [(ngModel)]=selectedId (change)="updateSelectedId($event)" >
-      <option *ngFor="let option of options1"   [value]=option.id>{{option.name}}</option>
-    </select>
-  </div>
-</div>
-
-
-
 <section class="sectionFirstImages">
+
   <div *ngFor="let item of filteredFilms" class="uniqueCard">
     <p-card
       [header]="item.title | cutterRef"
       [subheader]="item.genre_ids.toString() | arrayToString"
-      [style]="{ width: '360px' }"
+      [style]="{ width: '360px', fontSize: '10px' }"
       styleClass="p-card-shadow"
     >
-    <p-rating [ngModel]="item.vote_average" styleclass="p-rating-warning"  [readonly]="true" [stars]="10" [cancel]="false"></p-rating>
       <ng-template pTemplate="header">
         <img
+          class="imgCard"
           alt="Card"
           [src]="
             item.backdrop_path !== null
@@ -33,7 +19,12 @@
           "
         />
       </ng-template>
-      <p-scrollPanel *ngIf="item.overview.length > 2" [style]="{ width: '100%', height: '100px' }">
+      <p-scrollPanel
+        [style]="{
+          width: '100%',
+          height: '100px'
+        }"
+      >
         {{ item.overview }}
       </p-scrollPanel>
       <p-scrollPanel *ngIf="item.overview.length == 0" [style]="{ width: '100%', height: '100px', color: 'red' }">
@@ -52,7 +43,7 @@
       <ng-template pTemplate="footer">
         <p-button
           *ngIf="!checkSimilar(item)"
-          label="Save this movie"
+          label="Save this film"
           icon="pi pi-heart-fill"
           (click)="saveToLocal(item)"
         ></p-button>
@@ -62,6 +53,7 @@
           icon="pi pi-check"
           styleClass="p-button-success"
         ></p-button>
+
         <p-button
           label="More Info"
           icon="pi pi-info-circle"

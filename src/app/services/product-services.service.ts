@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from '../interfaces/product.interface';
 
-import { Product } from './product';
 
 @Injectable()
 export class ProductService {
@@ -64,21 +64,21 @@ export class ProductService {
         .then(data => { return data; });
     }
 
-    generatePrduct(): Product {
-        const product: Product =  {
-            id: this.generateId(),
-            name: this.generateName(),
-            description: "Product Description",
-            price: this.generatePrice(),
-            quantity: this.generateQuantity(),
-            category: "Product Category",
-            inventoryStatus: this.generateStatus(),
-            rating: this.generateRating()
-        };
+    // generatePrduct(): Product {
+    //     const product: Product =  {
+    //         id: this.generateId(),
+    //         name: this.generateName(),
+    //         description: "Product Description",
+    //         price: this.generatePrice(),
+    //         quantity: this.generateQuantity(),
+    //         category: "Product Category",
+    //         inventoryStatus: this.generateStatus(),
+    //         rating: this.generateRating()
+    //     };
 
-        product.image = product.name?.toLocaleLowerCase().split(/[ ,]+/).join('-')+".jpg";;
-        return product;
-    }
+    //     product.image = product.name.toLocaleLowerCase().split(/[ ,]+/).join('-')+".jpg";;
+    //     return product;
+    // }
 
     generateId() {
         let text = "";
