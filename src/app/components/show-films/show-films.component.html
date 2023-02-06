@@ -51,6 +51,7 @@
           *ngIf="checkSimilar(item)"
           label="Saved film"
           icon="pi pi-check"
+          (click)="saveToLocal(item)"
           styleClass="p-button-success"
         ></p-button>
 

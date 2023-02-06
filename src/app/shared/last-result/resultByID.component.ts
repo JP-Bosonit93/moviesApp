@@ -1,11 +1,8 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Result } from 'src/app/interfaces/result.interfaces';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieServices } from 'src/app/services/movie-services.service';
-import { RESTCountriesResponse } from 'src/app/interfaces/RestCountriesResponse.interfaces';
-import { ProductService } from '../../services/product-services.service';
 import { Product } from 'src/app/interfaces/product.interface';
-import { DialogModule } from 'primeng/dialog';
 import { movieID } from '../../interfaces/movieID.interface';
 
 @Component({

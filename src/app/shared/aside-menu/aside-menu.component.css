@@ -37,9 +37,10 @@
 }
 
 .card-container .round {
-	border: 2px solid #ffffff;
+	border: 4px solid #FBC02D;
 	border-radius: 50%;
   width: 100px;
+  height: 100px;
 
 }
 .p-button-warning,.p-button-success{
@@ -56,6 +57,10 @@
   height: 10vh;
 }
 
+.round{
+  width: 500px
+}
+
 h2,h3,h4{
   margin: 2px;
 }
@@ -64,5 +69,8 @@ h2,h3,h4{
   .asideMenu{
     margin: 5px;
     width:90vw!important;
+  }
+  .card-container{
+    display: none;
   }
 }

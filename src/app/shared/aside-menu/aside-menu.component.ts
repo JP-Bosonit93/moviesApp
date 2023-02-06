@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AsideMenuComponent implements OnInit {
   items: MenuItem[] = [];
   displayBasic!: boolean;
+  image: string = './foto_juan_pablo.jpg';
 
   constructor(private router: Router) {}
 
