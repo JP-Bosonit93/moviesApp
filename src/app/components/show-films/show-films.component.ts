@@ -5,7 +5,7 @@ import {  Router } from '@angular/router';
 @Component({
   selector: 'app-show-films',
   templateUrl: './show-films.component.html',
-  styleUrls: ['./show-films.component.sass']
+  styleUrls: ['./show-films.component.scss']
 })
 export class ShowFilmsComponent {
   localResults: Result[] = JSON.parse(localStorage.getItem('savedMovies')!);

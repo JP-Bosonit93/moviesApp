@@ -1,0 +1,17 @@
+
+
+<div class="centerh2Estrenos">
+  <h2 *ngIf="url=='top'" class="lastNews"> Top rated Films</h2>
+  <h2 *ngIf="url==''" class="lastNews"> Recent Films</h2>
+
+  <div>
+    <h2 class="filterGenre">Filter by genre</h2>
+    <select [(ngModel)]=selectedId (change)="updateSelectedId($event)" >
+      <option *ngFor="let option of options1"   [value]=option.id>{{option.name}}</option>
+    </select>
+  </div>
+</div>
+
+<app-show-films [filteredFilms]="filteredFilms"></app-show-films>
+
+

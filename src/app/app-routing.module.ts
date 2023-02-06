@@ -1,25 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './shared/about-component/about-component.component';
-import { ResultFilmsComponent } from './pages/result-films/result-films.component';
+import {  RecentFilms } from './pages/recent-films/recent-films.component';
 import { MostViewComponent } from './shared/most-view/most-view.component';
-import { DetailFilmComponent } from './shared/detail-film/detail-film.component';
-import { LastResultComponent } from './shared/last-result/last-result.component';
+import { LikesFilm } from './shared/likes-film/likes-film.component';
+import {  ResultByIDComponent } from './shared/last-result/resultByID.component';
 import { SearchComponent } from './shared/search/search.component';
-import { ProvesComponent } from './shared/proves/proves.component';
-import { PruebaComponent } from './shared/prueba/prueba.component';
+import { ReviewsComponent } from './shared/reviews-film/reviews.component';
 
 
 const routes: Routes = [
-  {path: '', component:ResultFilmsComponent},
-  { path: 'about', component: AboutComponent },
-  {path: 'likes', component:DetailFilmComponent},
-  { path: 'top', component: ResultFilmsComponent },
-  { path: 'last/:id', component: LastResultComponent },
+  {path: '', component:RecentFilms},
+  {path: 'likes', component:LikesFilm},
+  { path: 'top', component: RecentFilms },
+  { path: 'last/:id', component: ResultByIDComponent },
   { path: 'search', component: SearchComponent},
-  { path: 'proves', component: ProvesComponent},
-  { path: 'prueba', component: PruebaComponent},
+  { path: 'review', component: ReviewsComponent},
+
 ];
 
 @NgModule({

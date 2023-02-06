@@ -10,11 +10,11 @@ import { ArrayToString } from 'src/app/pipes/arrayToString.pipe';
 import { InputTextModule } from 'primeng/inputtext';
 @Component({
   selector: 'app-result-films',
-  templateUrl: './result-films.component.html',
-  styleUrls: ['./result-films.component.css'],
+  templateUrl: './recent-films.component.html',
+  styleUrls: ['./recent-films.component.css'],
   providers: [CutterRefPipe, ArrayToString],
 })
-export class ResultFilmsComponent implements OnInit {
+export class RecentFilms implements OnInit {
   generalResultRest!: RESTCountriesResponse;
   filteredFilms: Result[] = [];
   url!:string;

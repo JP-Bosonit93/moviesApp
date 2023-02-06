@@ -24,7 +24,7 @@ export class MostViewComponent implements OnInit {
   selectedCity1: any;
 
   constructor(
-    private ms: MovieServices,
+    private movieService: MovieServices,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -36,31 +36,31 @@ export class MostViewComponent implements OnInit {
     // let top = parts[parts.length - 1];
     // console.log(top)
 
-    let url: String =
+    let url: string =
       document.URL.split('/')[document.URL.split('/').length - 1];
 
     if (url == 'top') {
-      this.ms
+      this.movieService
         .getTopRatedMoviesByPage(1)
         .subscribe((generalResults: RESTCountriesResponse) => {
           this.generalResultRest = generalResults;
           this.filteredFilms = this.generalResultRest.results;
         });
 
-      this.ms.getGenres().subscribe((res) => {
+      this.movieService.getGenres().subscribe((res) => {
         this.allGenres = res;
       });
 
       this.options1 = genre;
     } else {
-      this.ms
+      this.movieService
       .getMovieByPage(1)
       .subscribe((generalResults: RESTCountriesResponse) => {
         this.generalResultRest = generalResults;
         this.filteredFilms = this.generalResultRest.results;
       });
 
-    this.ms.getGenres().subscribe((res) => {
+    this.movieService.getGenres().subscribe((res) => {
       this.allGenres = res;
     });
 
@@ -103,14 +103,14 @@ export class MostViewComponent implements OnInit {
   updateSelectedId(event: any) {
     this.selectedId = Number(event.target.value);
     if (this.selectedId == 0) {
-      this.ms
+      this.movieService
         .getMovieByPage(1)
         .subscribe((generalResults: RESTCountriesResponse) => {
           this.generalResultRest = generalResults;
           this.filteredFilms = this.generalResultRest.results;
         });
     } else {
-      this.ms
+      this.movieService
         .getMovieByPage(1)
         .subscribe((generalResults: RESTCountriesResponse) => {
           this.generalResultRest = generalResults;

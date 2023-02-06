@@ -7,12 +7,13 @@ import { ProductService } from '../../services/product-services.service';
 import { Product } from 'src/app/interfaces/product.interface';
 import { DialogModule } from 'primeng/dialog';
 import { movieID } from '../../interfaces/movieID.interface';
+
 @Component({
-  selector: 'app-last-result',
-  templateUrl: './last-result.component.html',
-  styleUrls: ['last-result.component.css'],
+  selector: 'app-result-byID',
+  templateUrl: 'result-byID.component.html',
+  styleUrls: ['./result-byID.component.scss'],
 })
-export class LastResultComponent implements OnInit, OnChanges {
+export class ResultByIDComponent implements OnInit, OnChanges {
   savedMovie: Result[] = [];
   result!: Result[];
   products: Product[] = [];
@@ -25,15 +26,15 @@ export class LastResultComponent implements OnInit, OnChanges {
   constructor(
     private route: Router,
     private actRoute: ActivatedRoute,
-    private ms: MovieServices
+    private movieServices: MovieServices
   ) {}
 
   ngOnInit(): void {
     this.actRoute.params.subscribe((params) => {
       let id = params['id'];
       this.id = id;
-      this.ms.getMovieReviews(this.id).subscribe(res => this.resultsReviews = res.results.length )
-      this.ms.getMovieByID(this.id).subscribe(res => {
+      this.movieServices.getMovieReviews(this.id).subscribe(res => this.resultsReviews = res.results.length )
+      this.movieServices.getMovieByID(this.id).subscribe(res => {
         this.result = [res].flat();
       });
     });

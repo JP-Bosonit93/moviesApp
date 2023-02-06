@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detail-film',
-  templateUrl: './detail-film.component.html',
-  styleUrls: ['./detail-film.component.css']
+  templateUrl: './likes-film.component.html',
+  styleUrls: ['likes-film.component.scss']
 })
-export class DetailFilmComponent implements OnInit {
+export class LikesFilm implements OnInit {
 
   savedMovies: Result[] = []
 
