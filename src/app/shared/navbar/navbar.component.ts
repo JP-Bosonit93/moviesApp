@@ -1,15 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../services/auth-service.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   items: MenuItem[] = [];
+  token!: null | Observable<string>;
+  state!: boolean;
+  isRegisterEnabled: boolean = true;
+
+  constructor(private router:Router, private authService:AuthService){
+    this.token = this.authService.getToken()
+  }
 
   ngOnInit() {
+
+    this.authService.checkIsLogged().subscribe(res => {
+      this.state = res;
+      console.log(res);
+      this.isRegisterEnabled = !res;
+    })
     this.items = [
       {
         label: 'Login',
@@ -20,12 +36,28 @@ export class NavbarComponent {
         icon: 'pi pi-fw pi-send',
       },
     ];
+    // console.log(argo);
+
   }
 
-  seeHeight(){
-    var navbar:any | null = document.querySelector('.navbarTemplate');
-    var height = navbar.offsetHeight;
-  console.log(height);
+
+  navigateToItems(item:any){
+   if(item == 'Login'){
+    this.router.navigate(['login']);
+   }else{
+    this.router.navigate(['register']);
+   }
+  }
+
+  removeToken(){
+    localStorage.removeItem('token');
+    this.authService.logout();
+  }
+
+  showAlert(item:boolean){
+    if(!item){
+      alert('primero tienes que desloguearte')
+    }
   }
 
 }

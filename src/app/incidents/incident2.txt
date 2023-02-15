@@ -1,0 +1,29 @@
+En angular tengo esta clase AuthService, @Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  private isLoggedIn = new BehaviorSubject<boolean> (false); como puedo hacer para que inicialice en true si al tener una funcion getToken si devuelve true inicialice en true
+
+Puedes hacer esto de la siguiente manera:
+
+typescript
+Copy code
+export class AuthService {
+  private isLoggedIn = new BehaviorSubject<boolean>(false);
+
+  constructor() {
+    this.checkLoginStatus();
+  }
+
+  checkLoginStatus() {
+    if (this.getToken()) {
+      this.isLoggedIn.next(true);
+    }
+  }
+
+  getToken() {
+    // Tu código para obtener el token aquí
+    // Devuelve true si el token existe, false de lo contrario
+  }
+}
+El método checkLoginStatus se llamará en el constructor, lo que significa que se ejecutará cuando se inicialice la clase AuthService. Si la función getToken devuelve true, entonces isLoggedIn será inicializado como true.

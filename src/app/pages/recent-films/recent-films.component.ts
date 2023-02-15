@@ -19,11 +19,10 @@ export class RecentFilms implements OnInit {
   filteredFilms: Result[] = [];
   url!: string;
   localResults: Result[] = JSON.parse(localStorage.getItem('savedMovies')!);
-  allGenres: Genre[] = [];
+  //allGenres: Genre[] = [];
   selectedId: number = 0;
   selectedCities!: Genre;
   options1: Genre[] = [];
-
   countries!: any;
   selectedCity1: any;
 
@@ -42,15 +41,10 @@ export class RecentFilms implements OnInit {
       this.ms
         .getTopRatedMoviesByPage(1)
         .subscribe((generalResults: RESTCountriesResponse) => {
+          console.log(generalResults)
           this.generalResultRest = generalResults;
           this.filteredFilms = this.generalResultRest.results;
         });
-
-      this.ms.getGenres().subscribe((res) => {
-        this.allGenres = res;
-      });
-
-      this.options1 = genre;
     } else {
       this.ms
         .getMovieByPage(1)
@@ -58,13 +52,15 @@ export class RecentFilms implements OnInit {
           this.generalResultRest = generalResults;
           this.filteredFilms = this.generalResultRest.results;
         });
-
-      this.ms.getGenres().subscribe((res) => {
-        this.allGenres = res;
-      });
-
-      this.options1 = genre;
     }
+    // this.ms.getGenres().subscribe((res) => {
+    //   this.allGenres = res;
+    // });
+
+    //* Aqui importamos las opciones que van al select y viene desde
+    //* la carpeta utils
+    this.options1 = genre;
+
   }
 
   updateSelectedId(event: any) {
@@ -72,7 +68,7 @@ export class RecentFilms implements OnInit {
     console.log(this.url);
     this.selectedId = Number(event.target.value);
     if (this.url == '') {
-      if (this.selectedId == 0) {
+      if (this.selectedId === 0) {
         this.ms
           .getMovieByPage(1)
           .subscribe((generalResults: RESTCountriesResponse) => {
@@ -91,7 +87,7 @@ export class RecentFilms implements OnInit {
           });
       }
     } else {
-      if (this.selectedId == 0) {
+      if (this.selectedId === 0) {
         this.ms
           .getTopRatedMoviesByPage(1)
           .subscribe((generalResults: RESTCountriesResponse) => {
@@ -111,5 +107,4 @@ export class RecentFilms implements OnInit {
       }
     }
   }
-
 }

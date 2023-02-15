@@ -7,11 +7,12 @@
 .sectionFirstImages{
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  /* align-items: center; */
   flex-wrap: wrap;
   overflow-y: auto;
   height:80vh;
   margin-top: 20px;
+  width: 80vw;
 }
 
 .searchH2{
@@ -46,4 +47,11 @@
 .p-input-icon-left > i:first-of-type {
   left: -1.5rem;
   color: #6c757d;
+}
+
+@media screen and (max-width: 1000px) {
+  .formCenter {
+    margin-left: 12vw;
+    margin-top: 20px;
+}
 }

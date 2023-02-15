@@ -7,11 +7,12 @@
 .sectionFirstImages{
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  // align-items: center;
   flex-wrap: wrap;
   overflow-y: auto;
   height:72vh;
   margin-top: 20px;
+  width: 82vw;
 }
 
 .uniqueCard{

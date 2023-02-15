@@ -17,7 +17,9 @@ import {RatingModule} from 'primeng/rating';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {TreeSelectModule} from 'primeng/treeselect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {PasswordModule} from 'primeng/password';
+import {KeyFilterModule} from 'primeng/keyfilter';
+import { MessageModule } from 'primeng/message';
 @NgModule({
   declarations: [],
   exports: [
@@ -36,8 +38,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RatingModule,
     MultiSelectModule,
     TreeSelectModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    PasswordModule,
+    KeyFilterModule,
+    MessageModule
   ]
 })
 export class PrimeNgModule { }

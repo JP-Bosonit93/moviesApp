@@ -14,6 +14,10 @@ import { ResultAfterInputComponent } from './result-after-input/result-after-inp
 import { ArrayToString } from '../pipes/arrayToString.pipe';
 import { ShowFilmsComponent } from '../components/show-films/show-films.component';
 import { ReviewsComponent } from './reviews-film/reviews.component';
+import { RegisterComponent } from '../auth/register/register.component';
+import { RegisterPremiumComponent } from '../auth/register-premium/register-premium.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from '../auth/login/login.component';
 
 
 
@@ -31,7 +35,10 @@ import { ReviewsComponent } from './reviews-film/reviews.component';
     ReviewsComponent,
     ArrayToString,
     ShowFilmsComponent,
-    ResultByIDComponent
+    RegisterComponent,
+    RegisterPremiumComponent,
+    AdminComponent,
+    LoginComponent
 
   ],
   exports:[

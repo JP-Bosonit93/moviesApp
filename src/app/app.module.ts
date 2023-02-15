@@ -5,15 +5,11 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { PanelMenuModule } from 'primeng/panelmenu';
-import { CutterRefPipe } from './pipes/cutter-ref.pipe';
-import { FormControl, FormsModule } from '@angular/forms';
-import { SearchComponent } from './shared/search/search.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

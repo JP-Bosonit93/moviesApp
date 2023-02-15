@@ -6,7 +6,10 @@
   </p-menubar> -->
 
   <p-menubar class="navbarTemplate">
-        <p-button (click)="seeHeight()" class="navbarButtons" [styleClass]= " item.label === 'Login' ? 'p-button-success' : 'p-button-warning' "  *ngFor="let item of items" label="{{item.label}}" ></p-button>
+        <p-button (click)="navigateToItems(isRegisterEnabled)" class="navbarButtons" (mouseover)="showAlert(isRegisterEnabled)" [disabled]="!isRegisterEnabled" [styleClass]= " item.label === 'Login' ? 'p-button-success' : 'p-button-warning' "  *ngFor="let item of items" label="{{item.label}}" ></p-button>
+        <p *ngIf="state">Welcome back {{ token | async }}</p>
+        <button pButton *ngIf="state" (click)="removeToken()">Deslogueate</button>
+
   </p-menubar>
 
 <!-- <p-menubar [model]="items"></p-menubar> -->

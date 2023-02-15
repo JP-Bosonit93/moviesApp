@@ -1,0 +1,35 @@
+
+
+.viewRegisterForm{
+  width: 80vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form {
+  background-color: #f1ecec;
+  padding: 2% 5%;
+  border-radius: 20px;
+  text-align: center;
+}
+.filed{
+  margin-top: 10px;
+}
+
+input{
+  margin-bottom: 10px;
+}
+.p-float-label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.toggle-password {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}

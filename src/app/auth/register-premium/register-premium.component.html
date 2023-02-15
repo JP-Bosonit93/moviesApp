@@ -1,0 +1,79 @@
+
+<section class="viewRegisterForm">
+  <div class="register-form">
+    <h2>Registro premium</h2>
+    <form [formGroup]="form" (ngSubmit)="handleEvent()">
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input type="text" id="inputtext" pInputText formControlName="name" />
+          <label for="inputtext">Nombre:</label>
+        </span>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input
+            type="email"
+            id="inputEmail"
+            pInputText
+            formControlName="email"
+          />
+          <label for="inputEmail">Email:</label>
+        </span>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input
+            type="password"
+            id="inputPass"
+            pInputText
+            formControlName="password"
+          />
+          <label for="inputPass">Password:</label>
+          <i
+            class="pi pi-eye toggle-password"
+            *ngIf="!passwordVisible"
+            (click)="togglePassword()"
+          ></i>
+          <i
+            class="pi pi-eye-slash toggle-password"
+            (click)="togglePassword()"
+          ></i>
+        </span>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input
+            type="password"
+            id="confirmPass"
+            pInputText
+            formControlName="password2"
+          />
+          <label for="confirmPass">Confirm Pasword:</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input
+            type="tel"
+            id="creditCard"
+            pInputText
+            pattern="[0-9]{16}"
+            formControlName="creditCard"
+            creditCardFormat
+          />
+          <label for="creditCard">Tarjeta de crédito: </label>
+        </span>
+      </div>
+
+      <p-button
+        label="Submit"
+        type="submit"
+        icon="pi pi-check"
+        iconPos="right"
+        [disabled]="form.invalid"
+      ></p-button>
+
+    </form>
+  </div>
+</section>
