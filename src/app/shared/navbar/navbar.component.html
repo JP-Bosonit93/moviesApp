@@ -6,9 +6,13 @@
   </p-menubar> -->
 
   <p-menubar class="navbarTemplate">
-        <p-button (click)="navigateToItems(isRegisterEnabled)" class="navbarButtons" (mouseover)="showAlert(isRegisterEnabled)" [disabled]="!isRegisterEnabled" [styleClass]= " item.label === 'Login' ? 'p-button-success' : 'p-button-warning' "  *ngFor="let item of items" label="{{item.label}}" ></p-button>
-        <p *ngIf="state">Welcome back {{ token | async }}</p>
-        <button pButton *ngIf="state" (click)="removeToken()">Deslogueate</button>
+      <div *ngIf="isRegisterEnabled">
+        <p-button  (click)="navigateToItems(item.label)" class="navbarButtons" (mouseover)="showAlert(isRegisterEnabled)"  [disabled]="!isRegisterEnabled" [styleClass]= " item.label === 'Login' ? 'p-button-success' : 'p-button-warning' "  *ngFor="let item of items" label="{{item.label}}" ></p-button>
+      </div>
+      <div style="display:'flex'; ">
+        <p class="p-userLogin" *ngIf="state">Welcome back {{ token | async }}</p>
+        <button pButton *ngIf="state" (click)="removeToken()">Sign out now!</button>
+      </div>
 
   </p-menubar>
 

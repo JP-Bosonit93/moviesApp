@@ -5,6 +5,6 @@
 </div>
 <div class="asideMEnuPlusRouter" id="completa">
   <router-outlet class="menuRouter" ></router-outlet>
-  <app-aside-menu  class="menuSide"></app-aside-menu>
+  <app-aside-menu *ngIf="bool" class="menuSide"></app-aside-menu>
 </div>
 <!-- <app-menu></app-menu> -->

@@ -82,6 +82,7 @@ export class AuthService {
   checkIsLoggedStatus(): boolean {
     let option!: boolean;
     this.isLoggedIn.subscribe((res) => option = res);
+    console.log(option)
     return option;
   }
 

@@ -13,13 +13,14 @@ export class NavbarComponent implements OnInit {
   items: MenuItem[] = [];
   token!: null | Observable<string>;
   state!: boolean;
-  isRegisterEnabled: boolean = true;
+  isRegisterEnabled: boolean = false;
 
   constructor(private router:Router, private authService:AuthService){
     this.token = this.authService.getToken()
   }
 
   ngOnInit() {
+    console.log(this.isRegisterEnabled)
 
     this.authService.checkIsLogged().subscribe(res => {
       this.state = res;
@@ -52,6 +53,7 @@ export class NavbarComponent implements OnInit {
   removeToken(){
     localStorage.removeItem('token');
     this.authService.logout();
+    this.router.navigate(['login']);
   }
 
   showAlert(item:boolean){

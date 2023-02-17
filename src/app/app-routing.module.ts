@@ -12,14 +12,14 @@ import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 
 const routes: Routes = [
-  {path: '', component: RecentFilms},
-  {path: 'likes', component: LikesFilm},
-  { path: 'top', component: RecentFilms,canActivate: [AuthGuardGuard] },
+  {path: '', component: RecentFilms, canActivate: [AuthGuardGuard]},
+  {path: 'likes', component: LikesFilm, canActivate: [AuthGuardGuard]},
+  { path: 'top', component: RecentFilms, canActivate: [AuthGuardGuard] },
   { path: 'last/:id', component: ResultByIDComponent },
-  { path: 'search', component: SearchComponent,canActivate: [AuthGuardGuard] },
+  { path: 'search', component: SearchComponent ,canActivate: [AuthGuardGuard] },
   { path: 'review', component: ReviewsComponent},
-  { path: 'login', component: LoginComponent, },
-  { path: 'register', component: RegisterComponent},
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardGuard]},
+  { path: 'register', component: RegisterComponent ,canActivate: [AuthGuardGuard]},
   { path: 'admin', component: AdminComponent},
 
 ];

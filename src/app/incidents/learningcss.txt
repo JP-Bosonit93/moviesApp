@@ -1,0 +1,58 @@
+// => Dame un ejemplo de una hoja de estilo en sass
+
+// Definir una variable para el color principal
+$color-principal: #007bff;
+
+// Definir un mixin para estilos de botón
+@mixin boton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: $color-principal;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: darken($color-principal, 10%);
+  }
+}
+
+// Definir los estilos para la clase .encabezado
+.encabezado {
+  background-color: $color-principal;
+  color: #fff;
+  padding: 20px;
+
+  h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  a {
+    @include boton;
+    margin: 10px;
+  }
+}
+
+// Definir los estilos para la clase .contenido
+.contenido {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+  p {
+    line-height: 1.5;
+    margin: 0 0 20px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 2px;
+    }
+  }
+
